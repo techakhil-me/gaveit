@@ -1,4 +1,5 @@
 {
+  "homepage": ".",
   "name": "gaveit-e-commerce",
   "version": "1.0.0",
   "description": "",
@@ -6,6 +7,7 @@
   "dependencies": {
     "@craco/craco": "^6.1.1",
     "@tailwindcss/line-clamp": "0.2.1",
+    "gh-pages": "^3.2.3",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-lottie": "1.2.3",
@@ -23,7 +25,9 @@
     "start": "craco start",
     "build": "craco build",
     "test": "craco test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "browserslist": [
     ">0.2%",
