@@ -2,14 +2,13 @@ import React, { useContext, useEffect } from "react";
 import CartItem from "../components/CartItem";
 import { CartContext } from "../Cartcontext";
 import { Link } from "react-router-dom";
-
+import { ReactComponent as Empty } from "../assets/Empty.svg";
 const Cart = () => {
   const { Cart, dispatch } = useContext(CartContext);
   useEffect(() => {
     dispatch({ type: "LoadCart" });
   }, []);
 
-  
   return (
     <div className="container mx-auto py-5 space-y-2">
       <p className="text-3xl font-bold leading-9 text-gray-800">
@@ -17,6 +16,13 @@ const Cart = () => {
       </p>
       <div className="grid lg:grid-cols-12 gap-6">
         <div className="col-span-full lg:col-span-8 space-y-4">
+          {Cart.length ? (
+            ""
+          ) : (
+            <div className="w-full flex items-center justify-center">
+              <Empty className="w-1/2" />
+            </div>
+          )}
           {Cart.map((product, i) => (
             <CartItem
               asin={product.id}
@@ -36,7 +42,8 @@ const Cart = () => {
                 Subtotal ({Cart.length} items)
               </p>
               <p className="text-lg font-bold leading-7 text-gray-700">
-                Rs {Cart.reduce(function (accumulator, item) {
+                Rs{" "}
+                {Cart.reduce(function (accumulator, item) {
                   return accumulator + item.current_price;
                 }, 0)}
               </p>
@@ -45,18 +52,17 @@ const Cart = () => {
               <p className="text-lg font-medium leading-7 text-gray-700">
                 Shipping
               </p>
-              <p className="text-lg font-bold leading-7 text-gray-700">
-                Rs 25
-              </p>
+              <p className="text-lg font-bold leading-7 text-gray-700">Rs 25</p>
             </div>
             <div className="inline-flex space-x-11 items-start justify-between w-full">
               <p className="text-xl font-medium leading-7 text-gray-700">
                 Cart Total
               </p>
               <p className="text-xl font-bold leading-7 text-gray-900">
-                Rs {(Cart.reduce(function (accumulator, item) {
+                Rs{" "}
+                {Cart.reduce(function (accumulator, item) {
                   return accumulator + item.current_price;
-                }, 0))+25}
+                }, 0) + 25}
               </p>
             </div>
           </div>
@@ -64,14 +70,18 @@ const Cart = () => {
             Your order is eligible for FREE Delivery. Select this option at
             checkout. Details
           </p>
-          <Link to="/order" className="inline-flex space-x-2 items-center justify-between w-full px-6 py-3 bg-yellow-500 rounded-lg">
+          <Link
+            to="/order"
+            className="inline-flex space-x-2 items-center justify-between w-full px-6 py-3 bg-yellow-500 rounded-lg"
+          >
             <p className="text-lg font-medium leading-7 text-gray-800">
               Checkout
             </p>
             <p className="text-lg font-medium leading-7 text-gray-800">
-              Rs {(Cart.reduce(function (accumulator, item) {
-                  return accumulator + item.current_price;
-                }, 0))+25}
+              Rs{" "}
+              {Cart.reduce(function (accumulator, item) {
+                return accumulator + item.current_price;
+              }, 0) + 25}
             </p>
           </Link>
         </div>
