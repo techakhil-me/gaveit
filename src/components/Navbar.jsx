@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { ReactComponent as Logo } from "../assets/Logo.svg";
 import { ReactComponent as AccountIcon } from "../assets/AccountIcon.svg";
 import { ReactComponent as LikeIcon } from "../assets/LikeIcon.svg";
 import { ReactComponent as CartIcon } from "../assets/CartIcon.svg";
 import { ReactComponent as SearchIcon } from "../assets/SearchIcon.svg";
 import { Link, useHistory } from "react-router-dom";
+import { CartContext } from "../Cartcontext";
 
 const Navbar = () => {
   const [Keyword, setKeyword] = useState("");
@@ -13,6 +14,12 @@ const Navbar = () => {
     e.preventDefault();
     history.push(`/search/${Keyword}`);
   };
+
+  const { Cart, dispatch } = useContext(CartContext);
+  useEffect(() => {
+    dispatch({ type: "LoadCart" });
+  }, []);
+
   return (
     <header className="text-gray-600 body-font antialiased">
       <div className="container mx-auto flex flex-wrap p-5 flex-col lg:flex-row lg:space-y-0 space-y-2 items-center">
@@ -67,8 +74,11 @@ const Navbar = () => {
             </div>
             <Link
               to="/cart"
-              className="flex transition duration-300 transform hover:scale-125 cursor-pointer items-center justify-center h-full px-4 py-2 rounded-lg hover:bg-yellow-100"
+              className="flex relativetransition duration-300 transform hover:scale-125 cursor-pointer items-center justify-center h-full px-4 py-2 rounded-lg hover:bg-yellow-100"
             >
+              <span class="absolute font-semibold leading-normal text-gray-800" style={{ top: "-9px" }}>
+                {Cart.length}
+              </span>
               <CartIcon />
             </Link>
           </div>

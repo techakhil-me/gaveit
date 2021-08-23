@@ -14,6 +14,9 @@ const cartReducer = (state, action) => {
         let deleteCart = state.filter((object) => object.id !== action.id);
         localStorage.setItem("cart", JSON.stringify(deleteCart));
         return deleteCart
+    case "DeleteAll":
+        localStorage.setItem("cart", JSON.stringify([]));
+        return []
     default:
       return state;
   }

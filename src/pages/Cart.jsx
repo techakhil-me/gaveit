@@ -33,10 +33,12 @@ const Cart = () => {
           <div className="flex flex-col space-y-2 items-start justify-start">
             <div className="inline-flex space-x-11 items-start justify-between w-full">
               <p className="text-lg font-medium leading-7 text-gray-700">
-                Subtotal (2 items)
+                Subtotal ({Cart.length} items)
               </p>
               <p className="text-lg font-bold leading-7 text-gray-700">
-                Rs 245.34
+                Rs {Cart.reduce(function (accumulator, item) {
+                  return accumulator + item.current_price;
+                }, 0)}
               </p>
             </div>
             <div className="inline-flex space-x-11 items-start justify-between w-full">
@@ -44,7 +46,7 @@ const Cart = () => {
                 Shipping
               </p>
               <p className="text-lg font-bold leading-7 text-gray-700">
-                Rs 245.34
+                Rs 25
               </p>
             </div>
             <div className="inline-flex space-x-11 items-start justify-between w-full">
@@ -52,7 +54,9 @@ const Cart = () => {
                 Cart Total
               </p>
               <p className="text-xl font-bold leading-7 text-gray-900">
-                Rs 245.34
+                Rs {(Cart.reduce(function (accumulator, item) {
+                  return accumulator + item.current_price;
+                }, 0))+25}
               </p>
             </div>
           </div>
@@ -65,7 +69,9 @@ const Cart = () => {
               Checkout
             </p>
             <p className="text-lg font-medium leading-7 text-gray-800">
-              Rs 1233.44
+              Rs {(Cart.reduce(function (accumulator, item) {
+                  return accumulator + item.current_price;
+                }, 0))+25}
             </p>
           </Link>
         </div>

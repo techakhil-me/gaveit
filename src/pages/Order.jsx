@@ -1,8 +1,14 @@
-import React, { useState } from "react";
+import React, { useState,useContext } from "react";
 import { Link } from "react-router-dom";
+import { CartContext } from "../Cartcontext";
 import OrderAnimation from "../components/OrderAnimation";
 const Order = () => {
   const [Orderanim, setOrderanim] = useState(false);
+  const { Cart, dispatch } = useContext(CartContext);
+  const PlaceOrder = ()=>{
+    setOrderanim(true)
+    dispatch({ type: "DeleteAll"});
+  }
   return (
     <>
       {Orderanim ? <OrderAnimation /> : null}
@@ -44,43 +50,43 @@ const Order = () => {
                 <input
                   type="text"
                   placeholder="eg- John Stency"
-                  className="text-base font-medium leading-normal text-gray-800 bg-transparent focus:outline-none"
+                  className="w-full text-base font-medium leading-normal text-gray-800 bg-transparent focus:outline-none"
                 />
               </div>
             </div>
             <div className="flex flex-col space-y-2 items-start justify-start w-full">
               <p className="text-lg font-semibold leading-7 text-gray-800">
-                Full name
+                Flat, House no., Building, Company, Apartment
               </p>
               <div className="inline-flex items-center justify-start px-4 py-2 w-full bg-gray-100 rounded-lg">
                 <input
                   type="text"
-                  placeholder="eg- John Stency"
-                  className="text-base font-medium leading-normal text-gray-800 bg-transparent focus:outline-none"
+                  placeholder="eg-  Shop No.2, Patel House, L T Road"
+                  className="w-full text-base font-medium leading-normal text-gray-800 bg-transparent focus:outline-none"
                 />
               </div>
             </div>
             <div className="flex flex-col space-y-2 items-start justify-start w-full">
               <p className="text-lg font-semibold leading-7 text-gray-800">
-                Full name
+                Area, Colony, Street, Sector, Village
               </p>
               <div className="inline-flex items-center justify-start px-4 py-2 w-full bg-gray-100 rounded-lg">
                 <input
                   type="text"
-                  placeholder="eg- John Stency"
-                  className="text-base font-medium leading-normal text-gray-800 bg-transparent focus:outline-none"
+                  placeholder="eg- Mulund (e), Mumbai"
+                  className="w-full text-base font-medium leading-normal text-gray-800 bg-transparent focus:outline-none"
                 />
               </div>
             </div>
             <div className="flex flex-col space-y-2 items-start justify-start w-full">
               <p className="text-lg font-semibold leading-7 text-gray-800">
-                Full name
+                PIN code
               </p>
               <div className="inline-flex items-center justify-start px-4 py-2 w-full bg-gray-100 rounded-lg">
                 <input
                   type="text"
-                  placeholder="eg- John Stency"
-                  className="text-base font-medium leading-normal text-gray-800 bg-transparent focus:outline-none"
+                  placeholder="eg- 400082"
+                  className="w-full text-base font-medium leading-normal text-gray-800 bg-transparent focus:outline-none"
                 />
               </div>
             </div>
@@ -134,7 +140,7 @@ const Order = () => {
               </div>
               <div
                 className="cursor-pointer inline-flex items-center justify-center w-full px-6 py-3 bg-yellow-500 rounded-lg"
-                onClick={() => setOrderanim(true)}
+                onClick={PlaceOrder}
               >
                 <p className="text-3xl font-bold leading-9 text-white">
                   Place Order

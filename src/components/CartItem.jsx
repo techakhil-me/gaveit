@@ -1,6 +1,7 @@
-import React,{useContext} from "react";
+import React, { useContext } from "react";
 import { ReactComponent as DeleteIcon } from "../assets/DeleteIcon.svg";
 import Stars from "./Stars";
+import { Link } from "react-router-dom";
 import { CartContext } from "../Cartcontext";
 const CartItem = ({
   asin,
@@ -17,11 +18,20 @@ const CartItem = ({
   };
   return (
     <div className="grid gap-3 lg:gap-6 grid-rows-2 grid-cols-4 lg:grid-rows-1 lg:grid-cols-8 bg-white shadow rounded-lg">
-      <div className="relative col-span-2 row-span-2 lg:row-span-1 lg:col-span-2 rounded-lg"><img className="absolute transform  -translate-x-1/2 inset-x-1/2 h-full object-cover" src={img} alt=""/></div>
+      <div className="relative col-span-2 row-span-2 lg:row-span-1 lg:col-span-2 rounded-lg">
+        <img
+          className="absolute transform  -translate-x-1/2 inset-x-1/2 h-full object-cover"
+          src={img}
+          alt=""
+        />
+      </div>
       <div className="col-span-2 lg:col-span-3	flex flex-col justify-between h-full py-2">
-        <p className="w-full text-xl font-semibold leading-7 text-gray-800">
+        <Link
+          to={"/product" + asin}
+          className="w-full text-xl font-semibold leading-7 text-gray-800"
+        >
           {title}
-        </p>
+        </Link>
         <div className="flex flex-col items-start justify-start w-full">
           <div className="inline-flex space-x-5 items-center justify-between">
             <Stars rating={rating} />
@@ -39,7 +49,10 @@ const CartItem = ({
           Rs {before_price}
         </p>
       </div>
-      <div onClick={handleDelete} className="cursor-pointer lg:col-span-1 flex items-center justify-center">
+      <div
+        onClick={handleDelete}
+        className="cursor-pointer lg:col-span-1 flex items-center justify-center"
+      >
         <DeleteIcon />
       </div>
     </div>
