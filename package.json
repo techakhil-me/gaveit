@@ -1,0 +1,34 @@
+{
+  "name": "gaveit-e-commerce",
+  "version": "1.0.0",
+  "description": "",
+  "keywords": [],
+  "dependencies": {
+    "@craco/craco": "^6.1.1",
+    "@tailwindcss/line-clamp": "0.2.1",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "react-lottie": "1.2.3",
+    "react-router-dom": "5.2.0",
+    "react-scripts": "4.0.2"
+  },
+  "devDependencies": {
+    "react-router-dom": "5.2.0",
+    "autoprefixer": "^9.8.6",
+    "postcss": "^7.0.36",
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.7",
+    "@tailwindcss/postcss7-compat": "^2.0.3"
+  },
+  "scripts": {
+    "start": "craco start",
+    "build": "craco build",
+    "test": "craco test",
+    "eject": "react-scripts eject"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}
