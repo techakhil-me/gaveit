@@ -15,7 +15,7 @@ const OrderAnimation = () => {
     }
   };
   return (
-    <div className="fixed h-5/6 z-99 w-full flex-grow flex items-center justify-center">
+    <div className="fixed left-0 h-5/6 z-99 w-full flex-grow flex items-center justify-center">
       <Lottie
         options={defaultOptions}
         height={400}
