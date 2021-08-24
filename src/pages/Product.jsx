@@ -134,7 +134,7 @@ const Product = () => {
                     Buy Now
                   </p>
                 </Link>
-                <div className="flex transform transition hover:scale-110 duration-200 space-x-2 items-center justify-center px-6 py-3 border rounded-lg border-gray-800 ">
+                <div className="cursor-pointer flex transform transition hover:scale-110 duration-200 space-x-2 items-center justify-center px-6 py-3 border rounded-lg border-gray-800 ">
                   <CartIcon />
                   <p
                     onClick={handleClick}
