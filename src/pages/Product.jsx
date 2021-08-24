@@ -20,14 +20,16 @@ const Product = () => {
     fetch(`https://gaveit-api.herokuapp.com/gaveit/product?asin=${id}`)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         setMainImgUrl(data.product.main_image);
         setProduct(data);
         setLoading(false);
       });
   }, []);
 
-  const handleClick = () => {
+  const handleClick = (e) => {
+    e.target.parentNode.classList.add("filter");
+    e.target.parentNode.classList.add("invert");
+    e.target.innerText = "Added to cart";
     let newData = {
       id: id,
       title: Product.product.title,
@@ -132,7 +134,7 @@ const Product = () => {
                     Buy Now
                   </p>
                 </Link>
-                <button className="flex transform transition hover:scale-110 duration-200 space-x-2 items-center justify-center px-6 py-3 border rounded-lg border-gray-800">
+                <div className="flex transform transition hover:scale-110 duration-200 space-x-2 items-center justify-center px-6 py-3 border rounded-lg border-gray-800 ">
                   <CartIcon />
                   <p
                     onClick={handleClick}
@@ -140,7 +142,7 @@ const Product = () => {
                   >
                     Add to Cart
                   </p>
-                </button>
+                </div>
               </div>
             </div>
           </>
