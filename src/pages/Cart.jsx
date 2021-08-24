@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from "react";
 import CartItem from "../components/CartItem";
 import { CartContext } from "../Cartcontext";
 import { Link } from "react-router-dom";
-import { ReactComponent as Empty } from "../assets/Empty.svg";
+import Empty from "../components/Empty";
 const Cart = () => {
   const { Cart, dispatch } = useContext(CartContext);
   useEffect(() => {
@@ -20,7 +20,7 @@ const Cart = () => {
             ""
           ) : (
             <div className="w-full flex items-center justify-center">
-              <Empty className="w-1/2" />
+              <Empty />
             </div>
           )}
           {Cart.map((product, i) => (
