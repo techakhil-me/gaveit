@@ -2,13 +2,11 @@ import React, { useRef } from "react";
 import Lottie from "react-lottie";
 import animationData from "../assets/EmptyAnim";
 const Empty = () => {
-  let history = useHistory();
   const defaultOptions = {
     loop: true,
     autoplay: true,
     speed: 1,
     animationData: animationData,
-
     rendererSettings: {
       preserveAspectRatio: "xMidYMid slice"
     }
