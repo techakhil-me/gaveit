@@ -17,7 +17,7 @@ const Product = () => {
 
   let { id } = useParams();
   useEffect(() => {
-    fetch(`https://gaveit-api.herokuapp.com/gaveit/product?asin=${id}`)
+    fetch(`https://gave.dtbots.repl.co/gaveit/product?asin=${id}`)
       .then((res) => res.json())
       .then((data) => {
         setMainImgUrl(data.product.main_image);
