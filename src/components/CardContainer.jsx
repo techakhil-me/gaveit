@@ -31,7 +31,7 @@ const CardContainer = ({ category, Loading, setLoading }) => {
 
   useEffect(() => {
     fetch(
-      `https://gaveit-api.herokuapp.com/gaveit/search?keyword=${category.replace(
+      `https://gave.dtbots.repl.co/gaveit/search?keyword=${category.replace(
         " ",
         "%20"
       )}`
