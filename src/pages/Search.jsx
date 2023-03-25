@@ -10,7 +10,7 @@ const Search = () => {
   useEffect(() => {
     setLoading(true)
     fetch(
-      `https://gaveit-api.herokuapp.com/gaveit/search?keyword=${keyword.replace(
+      `https://gave.dtbots.repl.co/gaveit/search?keyword=${keyword.replace(
         " ",
         "%20"
       )}`
